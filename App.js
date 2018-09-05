@@ -8,6 +8,7 @@ import uuidv1 from "uuid/v1";
 const {height, width} = Dimensions.get("window");
 
 export default class App extends React.Component {
+  
   state = {
     newToDo: "",
     loadedToDos: false,
@@ -38,7 +39,7 @@ export default class App extends React.Component {
             onSubmitEditing={this._addToDo}
           />
           <ScrollView contentContainerStyle={styles.toDos}>
-            {Object.values(toDos).map(toDo=> (<ToDo 
+            {Object.values(toDos).reverse().map(toDo=> (<ToDo 
             key={toDo.id} 
             deleteToDo={this._deleteToDo}
             uncompleteToDo={this._uncompleteToDo}
@@ -57,7 +58,14 @@ export default class App extends React.Component {
     });
   };
 
-  _loadToDos = () => {
+  _loadToDos = async () => {
+    try{
+      const toDos = await AsyncStorage.getItem("toDos");
+      const parsedToDos = JSON.parse(toDos);
+      this.setState({loadedToDos: true, toDos: parsedToDos});
+    } catch(err){
+      console.log(err);
+    }
     this.setState({
       loadedToDos: true
     })
