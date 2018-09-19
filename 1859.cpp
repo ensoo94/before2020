@@ -29,8 +29,7 @@ int main(int argc, char** argv)
             }
         }
 
-		cout << "Case #" << test_case+1 << endl;
-		cout << Answer << endl;
+		cout << "#"<<test_case+1<<" "<<Answer << endl;
 	}
 
 	return 0;
