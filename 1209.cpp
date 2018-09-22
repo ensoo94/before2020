@@ -24,7 +24,7 @@ int main(int argc, char** argv)
 			if(temp > Answer) Answer = temp;
 			temp = 0;
 		}
-		cout<<"row max: "<<Answer<<endl;
+
 		//check col
 		for(int m=0;m<100;m++) 
 		{
@@ -35,7 +35,6 @@ int main(int argc, char** argv)
 			if(temp > Answer) Answer = temp;
 			temp = 0;
 		}
-		cout<<"col max: "<<Answer<<endl;
 		
 		//check cross 1
 		for(int r=0;r<100;r++){
@@ -51,7 +50,6 @@ int main(int argc, char** argv)
 		if(temp > Answer) Answer = temp;
 		temp = 0;
 		
-		cout<<"cross max: "<<Answer<<endl;
 		
 		cout<<"#"<<T<<" "<<Answer<<endl;
 	}
