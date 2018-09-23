@@ -6,7 +6,7 @@ using namespace std;
 unsigned long long Answer;
 long long a, b, n;
 
-unsigned long long calMin(long long rowNum, long long colNum){
+unsigned long long calMin(long long rowNum, long long colNum){ //row, col int로 하면 답 안 나옴. 
 	unsigned long long temp;
 	temp = a*abs(rowNum-colNum) + b*(n-rowNum*colNum);
 	return temp;
