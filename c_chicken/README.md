@@ -10,8 +10,8 @@ C++를 이용해 회원 관리와 주문 관리 시스템을 구현하였다. <b
 ### 2. 기능 소개 <br>
 (1) Member : Insert, DeleteOne(Name 검색), DeleteAll, Display, Search(전화번호, 이름, Vip), Sort(Point, Name, Vip), Save, Load <br>
 (2) Order : Add, Complete, Show Income, Display, Pay, Save, Load <br>
-(3) Clear
-(4) Exit
+(3) Clear<br>
+(4) Exit<br>
 
 ### 3. 클래스 소개 <br>
 (1) Handler : OrderHandler와 MemberHandler 클래스를 위한 추상 클래스이다. <br>
