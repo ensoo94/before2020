@@ -7,10 +7,11 @@ def solution(N, road, K):
     
     while queue:
         for r in road:
+            updated_length = shortest_length[start_point] + r[2]
             if r[0] == start_point:
-                shortest_length[r[1]] = min(shortest_length[start_point] + r[2], shortest_length[r[1]])
+                shortest_length[r[1]] = min(updated_length, shortest_length[r[1]])
             if r[1] == start_point:
-                shortest_length[r[0]] = min(shortest_length[start_point] + r[2], shortest_length[r[0]])
+                shortest_length[r[0]] = min(updated_length, shortest_length[r[0]])
 
         queue.remove(start_point)
         
