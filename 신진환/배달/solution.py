@@ -23,10 +23,5 @@ def solution(N, road, K):
 
         if tmp == 10000*N:
             break
-    
-    answer = 0
-    for key in shortest_length.keys():
-        if shortest_length[key] <= K:
-            answer += 1
         
-    return answer
+    return len([i for i, v in shortest_length.items() if v <= K])
