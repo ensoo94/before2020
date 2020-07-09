@@ -1,6 +1,8 @@
+from queue import PriorityQueue
+
 def solution(N, road, K):
     start_point = 1
-    shortest_length = { l:10000*N for l in range(1, N+1)}
+    shortest_length = { l:float('inf') for l in range(1, N+1)}
     shortest_length[start_point] = 0
     
     queue = [n for n in range(1, N+1)]
@@ -16,13 +18,10 @@ def solution(N, road, K):
         queue.remove(start_point)
         
         # Select Next Starting point
-        tmp = 10000*N
+        tmp = float('inf')
         for q in queue:
             if tmp > shortest_length[q]:
                 tmp = shortest_length[q]
                 start_point = q
 
-        if tmp == 10000*N:
-            break
-        
     return len([i for i, v in shortest_length.items() if v <= K])

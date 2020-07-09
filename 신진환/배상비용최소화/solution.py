@@ -23,8 +23,8 @@ def solution(no, works):
     
     # `last_works` is only using calculating before check point in works array
     # `remain_works` is cumulated after check point in works array
-    last_works = prev_work**2
-    remain_works = sum([w*w for w in works[check_point:]])
+    last_works = prev_work ** 2
+    remain_works = sum([w * w for w in works[check_point:]])
     
     # Then will substrate exceed works from `last_works`
     # `works_count` for how many exist as same value as the value in works[check_point]
@@ -37,10 +37,10 @@ def solution(no, works):
     chunk_works = last_works
     
     for i in range(chunk_amount):
-        chunk_works -= 2*(works[check_point] - i) - 1
+        chunk_works -= 2 * (works[check_point] - i) - 1
     
     exceed_works += (last_works - chunk_works) * works_count
-    exceed_works += (2*(works[check_point] - chunk_amount) - 1 ) * unit_amount
+    exceed_works += (2 * (works[check_point] - chunk_amount) - 1 ) * unit_amount
     
     answer = (last_works * check_point) + remain_works - exceed_works
     

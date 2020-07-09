@@ -1,6 +1,4 @@
 def solution(s):
-    answer = True
-    
     if s[0] == ")" or s[-1] == "(":
         return False
     
