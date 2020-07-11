@@ -5,8 +5,6 @@ def solution(no, works):
     if sum(works) < no:
         return 0
     
-    # Only once iterate all works at the first time.
-    # works.sort(reverse=True) 
     queue = PriorityQueue()
     [queue.put((1000 - w, w)) for w in works]
     

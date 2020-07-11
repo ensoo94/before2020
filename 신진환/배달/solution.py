@@ -1,27 +1,23 @@
 from queue import PriorityQueue
 
 def solution(N, road, K):
-    start_point = 1
-    shortest_length = { l:float('inf') for l in range(1, N+1)}
-    shortest_length[start_point] = 0
     
-    queue = [n for n in range(1, N+1)]
+    pq = PriorityQueue()
+    pq.put((0, 1)) # append No.1 as start point.
     
-    while queue:
+    dist_list = [float('inf')] * (N + 1)
+    dist_list[1] = 0
+    
+    while not pq.empty():
+        dist, src = pq.get()
         for r in road:
-            updated_length = shortest_length[start_point] + r[2]
-            if r[0] == start_point:
-                shortest_length[r[1]] = min(updated_length, shortest_length[r[1]])
-            if r[1] == start_point:
-                shortest_length[r[0]] = min(updated_length, shortest_length[r[0]])
-
-        queue.remove(start_point)
-        
-        # Select Next Starting point
-        tmp = float('inf')
-        for q in queue:
-            if tmp > shortest_length[q]:
-                tmp = shortest_length[q]
-                start_point = q
-
-    return len([i for i, v in shortest_length.items() if v <= K])
+            new_dist = dist + r[2]
+            
+            if r[0] == src and new_dist < dist_list[r[1]]:
+                dist_list[r[1]] = new_dist
+                pq.put((new_dist, r[1]))
+            if r[1] == src and new_dist < dist_list[r[0]]:
+                dist_list[r[0]] = new_dist
+                pq.put((new_dist, r[0]))
+    
+    return len([t for t in dist_list if t <= K])
