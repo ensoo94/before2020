@@ -5,15 +5,18 @@ def solution(scoville, K):
     heapq.heapify(scoville)
     
     while len(scoville) > 0 :
-        lowFood = heapq.heappop(scoville)
-        if lowFood >= K : #가장 낮은 값이 K보다 클 때
+        low_food = heapq.heappop(scoville)
+        if low_food >= K :
             return answer
-        elif len(scoville) == 0: #다 섞었는데 K보다 작을 때
-            return -1
+            
+        # if ~ else 말고 try ~ except로 예외처리
+        try:
+            second_food = heapq.heappop(scoville)
+        except: 
+            return -1 
         else:
             answer += 1
-            secondFood = heapq.heappop(scoville)
-            newFood = lowFood + (secondFood*2)
-            heapq.heappush(scoville, newFood)
+            new_food = low_food + (second_food*2)
+            heapq.heappush(scoville, new_food)
 
     return answer
