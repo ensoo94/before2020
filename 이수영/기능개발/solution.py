@@ -1,23 +1,22 @@
+from math import ceil
+
 def solution(progresses, speeds):
     answer = []
 
     #배포일 check
-    releaseDate = []
+    release_date = [] # Python은 snake_case 변수명 선호
     for i in range(0, len(speeds)):
-        #python은 int/int 해도 결과값이 소수!
-        remainJob = int((100 - progresses[i])/speeds[i])
-        if (100 - progresses[i])%speeds[i] != 0:
-            remainJob += 1
-        releaseDate.append(remainJob)
+        remainJob = ceil((100 - progresses[0]) / speeds[0]) # 필요없는 조건문 없애고 올림
+        release_date.append(remain_job)
     
     #순서대로 배포
-    while len(releaseDate) > 0 :
+    while len(release_date) > 0 :
         cnt = 0
-        for date in releaseDate:
-            if date > releaseDate[0] :
+        for date in release_date:
+            if date > release_date[0] :
                 break
             cnt += 1
         answer.append(cnt)
-        releaseDate = releaseDate[cnt:]
+        release_date = release_date[cnt:]
         
-    return answer                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+    return answer  
