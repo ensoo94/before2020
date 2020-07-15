@@ -5,14 +5,13 @@ def solution(no, works):
     heapq.heapify(works)
     
     # 남은 일의 합 < no면 무조건 0
-    if -sum(works) <= no :
+    if -sum(works) <= no:
         return 0
     
     # 가장 큰 수 찾아서 깎기
-    while no > 0:
+    for _ in range(no): #while 보다는 이렇게!
         work = heapq.heappop(works) + 1
         heapq.heappush(works, work)
-        no -= 1
        
     result = sum([i**2 for i in works])
     return result

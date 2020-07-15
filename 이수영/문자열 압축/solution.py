@@ -1,8 +1,8 @@
 def solution(s):
     answer = 1000
-    max_len = len(s)//2
+    max_len = len(s) // 2
     
-    if len(s) == 1 :
+    if len(s) == 1:
         return 1
     
     for i in range(1, max_len+1):
@@ -12,8 +12,8 @@ def solution(s):
         first_str = sliced_list[0]
         result = '' # 압축결과
         
-        for s_str in sliced_list[1:] :
-            if s_str == first_str :
+        for s_str in sliced_list[1:]:
+            if s_str == first_str:
                 cnt += 1
             else :
                 if cnt > 1:
