@@ -1,5 +1,3 @@
-from math import ceil
-
 def solution(max_weight, specs, names):
     answer = 1
     remain_weight = max_weight

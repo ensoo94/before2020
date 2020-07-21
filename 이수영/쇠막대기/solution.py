@@ -3,7 +3,7 @@ def solution(arrangement):
     
     # 레이저 구분
     # Python의 replace는 원래 str 변화x 결과값을 return하는 함수
-    arrangement = list(arrangement.replace('()', '0'))
+    arrangement = arrangement.replace('()', '0')
     
     cnt = 0 # 쇠막대기의 수
     for point in arrangement:
