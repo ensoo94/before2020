@@ -1,4 +1,3 @@
-from collections import Counter
 def solution(v):
     answer = []
     

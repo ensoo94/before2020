@@ -8,4 +8,4 @@ def solution(s):
         else:
             answer.append(letter)
 
-    return 0 if len(answer) > 0 else 1
+    return int(answer == [])
