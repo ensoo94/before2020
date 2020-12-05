@@ -1,0 +1,142 @@
+    
+<div id="register" layout="row" layout-align="end end">
+    <img ng-src = "{{vm.surly}}" class = "bgimg" ms-fade ng-show ="vm.bgf" ng-if = "vm.isM == false">
+    <img ng-src = "{{vm.surlm}}" class = "bgimg" ms-fade ng-hide ="vm.bgf" ng-if = "vm.isM == false">
+    <div id="register-form-wrapper" class="flex-scrollable md-whiteframe-1dp" layout="column" flex ms-scroll>
+        <div id="register-form">
+            <div class="title"><h1>Create Account</h1></div>
+            <form name="registerForm" novalidate>
+                <md-input-container class="md-block" md-no-float>
+                    <input name="userId" ng-model="vm.form.userId" placeholder="이메일 주소 (@skku.edu)" ng-pattern="/^.+@+skku+\.+edu+$/"
+                           required>
+                           
+                    
+                    <div ng-messages="registerForm.userId.$error" role="alert">
+                        <div ng-message="required">
+                            <span>올바른 이메일 주소를 입력해 주세요.</span>
+                        </div>
+                        <div ng-message="pattern">
+                            <span>skku 이메일 형식에 맞지 않습니다.</span>
+                        </div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block" md-no-float>
+                    <input type="password" name="passWd" ng-model="vm.form.passWd" placeholder="비밀번호 (6~16자)" ng-minlength="6" ng-maxlength="16"
+                            required>
+                    <div ng-messages="registerForm.passWd.$error" role="alert" multiple>
+                        <div ng-message="required">
+                            <span>비밀번호를 입력해주세요</span>
+                        </div>
+                         <div ng-message="minlength">
+                            <span>비밀번호는 최소 6자 이상 입력하셔야 합니다.</span>
+                        </div>
+                        <div ng-message="maxlength">
+                            <span>비밀번호는 최대 16자까지 입력하실 수 있습니다.</span>
+                        </div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block" md-no-float>
+                    <input type="password" name="passWdConfirm" ng-model="vm.form.passWdConfirm" placeholder="비밀번호 확인" ms-compare="vm.form.passWd"
+                            required>
+                    <div ng-messages="registerForm.passWdConfirm.$error" role="alert">
+                        <div ng-message="required">
+                            <span>비밀번호 확인을 입력해주세요</span>
+                        </div>
+                        <div ng-message="password">
+                            <span>비밀번호가 일치하지 않거나 잘못 입력하셨습니다.</span>
+                        </div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block" md-no-float>
+                    <input type="nickname" name="nickname" ng-model="vm.form.nickname" placeholder="닉네임 (영문 및 숫자 조합 1~16자)" ng-minlength="1" ng-maxlength="16" ng-pattern="/[0-9]|[a-z]|[A-Z]/"
+                           required>
+                    <div ng-messages="registerForm.nickname.$error" role="alert">
+                        <div ng-message="required">
+                            <span>닉네임을 입력해주세요</span>
+                        </div>
+                        <div ng-message="minlength">
+                            <span>닉네임은 최소 1자 이상 입력하셔야 합니다.</span>
+                        </div>
+                        <div ng-message="maxlength">
+                            <span>닉네임은 최대 16자까지 입력하실 수 있습니다.</span>
+                        </div>
+                        <div ng-message="pattern">
+                            <span>닉네임은 영문자와 숫자로만 이루어져야합니다.</span>
+                        </div>
+                    </div>
+                </md-input-container>
+                
+                <md-input-container class="md-block" md-no-float>
+                    <input name="name" ng-model="vm.form.username" placeholder="사용자 이름 (1~16자)" ng-minlength="1" ng-maxlength="16"
+                           required>
+                    <div ng-messages="registerForm.name.$error" role="alert">
+                        <div ng-message="required">
+                            <span>이름을 입력해주세요</span>
+                        </div>
+                        <div ng-message="minlength">
+                            <span>이름은 최소 1자 이상 입력하셔야 합니다.</span>
+                        </div>
+                        <div ng-message="maxlength">
+                            <span>닉네임은 최대 16자까지 입력하실 수 있습니다.</span>
+                        </div>
+                    </div>
+                </md-input-container>
+
+                <div layout="row" flex>
+                    <md-input-container class="md-block" md-no-float flex="50">
+                        <label>캠퍼스</label>
+                        <md-select name="type" ng-model="vm.form.type" required>
+                          <md-option value="Y">
+                            율전
+                          </md-option>
+                          <md-option value="M">
+                            명륜
+                          </md-option>
+                        </md-select>
+                        <div ng-messages="registerForm.type.$error" role="alert">
+                            <div ng-message="required">
+                                <span>캠퍼스를 입력해주세요.</span>
+                            </div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block" md-no-float flex="50">
+                        <label>소속 학부</label>
+                        <md-select name="college" ng-model="vm.form.college" required>
+                          <md-option value="Y">
+                            율전
+                          </md-option>
+                          <md-option value="M">
+                            명륜
+                          </md-option>
+                        </md-select>
+                        <div ng-messages="registerForm.college.$error" role="alert">
+                            <div ng-message="required">
+                                <span>소속 학부를 입력해주세요.</span>
+                            </div>
+                        </div>
+                    </md-input-container>
+
+                </div>
+
+                <md-input-container class="md-block" md-no-float>
+                    <md-checkbox name="agree" ng-model="vm.form.agree" required>
+                    </md-checkbox>
+                    <span>개인정보 이용 및 관리 </span><a ng-click="vm.openContractionDialog($event)" class="md-accent-color contraction">약관</a><span>에 동의합니다.</span>
+                    <div ng-messages="registerForm.agree.$error" role="alert" multiple md-auto-hide="false">
+                        <div ng-message="required">
+                            <span>약관에 동의해주세요.</span>
+                        </div>
+                    </div>
+                </md-input-container>
+                <md-button type="submit" class="md-raised md-accent submit-button" aria-label="CREATE MY ACCOUNT"
+                           ng-disabled="registerForm.$invalid || registerForm.$pristine" ng-click="vm.submitForm($event)">
+                    계정 만들기
+                </md-button>
+            </form>
+            <div class="login" layout="row" layout-sm="column" layout-align="center center">
+                <span class="text">이미 계정을 가지고 계십니까?</span>
+                <a class="link" ui-sref="app.login">Log in</a>
+            </div>
+        </div>
+    </div>
+</div>

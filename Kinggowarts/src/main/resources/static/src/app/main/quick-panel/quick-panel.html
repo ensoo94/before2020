@@ -1,0 +1,34 @@
+<md-content>
+    <md-tabs>
+        <md-tab md-on-select="timelineEvent()">
+            <md-tab-label>
+                <span>공지사항</span>
+            </md-tab-label>
+            <md-tab-body>
+                <md-content class="today-tab scrollable" ng-if="vm.loadingFlagT == true" ms-scroll>
+                    <ms-qptimeline timeline-data="vm.timelineList" category-data="vm.notice_category"></ms-qptimeline>
+                </md-content>
+            </md-tab-body>
+        </md-tab>
+        <md-tab md-on-select="peerEvent()">
+            <md-tab-label>
+                <span>피어</span>
+            </md-tab-label>
+            <md-tab-body>
+                <md-content class="chat-tab scrollable" ng-if="vm.loadingFlagP == true && vm.loadingFlagR == true" ms-scroll>
+                    <ms-qppeer peer-data="vm.peer" request-data="vm.request"></ms-qppeer>
+                </md-content>
+            </md-tab-body>
+        </md-tab>
+        <md-tab md-on-select="wikiEvent()">
+            <md-tab-label>
+                <span>최근 수정 위키</span>
+            </md-tab-label>
+            <md-tab-body>
+                <md-content class="activity-tab scrollable" ng-if="vm.loadingFlagW == true" ms-scroll>
+                    <ms-qprecentwiki recentwiki-data="vm.recentwiki"></ms-qprecentwiki>
+                </md-content>
+            </md-tab-body>
+        </md-tab>
+    </md-tabs>
+</md-content>
